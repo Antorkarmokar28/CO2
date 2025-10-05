@@ -1,24 +1,25 @@
+"use client";
 import Link from "next/link";
 import Logo from "../Logo/logo";
 import navbarItems from "./NavbarItems";
 import { BellDot, UserRound } from "lucide-react";
+import { usePathname } from "next/navigation";
 const Navbar = () => {
+  const pathName = usePathname();
   return (
-    <nav className="p-5">
+    <nav className="p-5 bg-white mb-6">
       <div className="container mx-auto">
         <div className="flex justify-between items-center text-xl">
           <div className="flex items-center gap-14">
             <Logo />
             <ul className="flex gap-6">
               {navbarItems.map((item) => {
-                const Icon = item.icon; // 👈 Icon কম্পোনেন্ট রেফারেন্স
+                const Icon = item.icon;
+                const isActive = pathName === item.link;
                 return (
                   <li key={item.id}>
-                    <Link
-                      href={item.link}
-                      className="flex items-center gap-2 hover:text-blue-600"
-                    >
-                      <Icon size={18} /> {/* 👈 এখানে JSX আকারে render */}
+                    <Link href={item.link} className={`flex items-center gap-2 ${isActive? "p-2 rounded-xl bg-gradient-to-r from-[#F76D02] to-[#FCB045] font-bold text-white" : "text-black p-2 rounded-xl"}`}>
+                      <Icon size={18} />
                       <span>{item.title}</span>
                     </Link>
                   </li>

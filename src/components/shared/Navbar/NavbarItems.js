@@ -4,7 +4,7 @@ const navbarItems = [
   {
     id: 1,
     title: "Dashboard",
-    link: "/dashboard",
+    link: "/",
     icon: LayoutDashboard,
   },
   {
